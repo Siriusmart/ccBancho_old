@@ -17,12 +17,6 @@ public class OnPlayerChat {
         object[] parameters = { p, args[1..] };
         object? res = command.GetMethod("Run").Invoke(null, parameters);
 
-        if (args[0] == "help" && res != null) {
-            p.Message($"&e<Local>{p.ColoredName}: &f{message}");
-            p.Message($"&e<Local>&8BanchoBot: &f{res}");
-            return;
-        }
-
         if (res == null) {
             string format =
                 (string)command.GetMethod("Format").Invoke(null, null);
@@ -35,8 +29,13 @@ public class OnPlayerChat {
             p.Message(
                 $"&e<Local>&8BanchoBot: &f{ChatHelp.Run(p, new string[1]{args[1]})}'.");
         } else {
-            Chat.MessageFrom(p, $"{p.ColoredName}: &f{message}");
-            Chat.MessageFrom(p, $"&8BanchoBot: &f{res}");
+            if ((bool)command.GetMethod("Public").Invoke(null, null)) {
+                Chat.MessageFrom(p, $"{p.ColoredName}: &f{message}");
+                Chat.MessageFrom(p, $"&8BanchoBot: &f{res}");
+            } else {
+                p.Message($"&e<Local>{p.ColoredName}: &f{message}");
+                p.Message($"&e<Local>&8BanchoBot: &f{res}");
+            }
         }
     }
 }

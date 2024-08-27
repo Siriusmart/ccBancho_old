@@ -3,6 +3,10 @@ using MCGalaxy;
 public class ChatHelp : ChatCommand {
     static Random rng = new Random();
 
+    public static bool Public() {
+        return false;
+    }
+
     public static string Format() { return "<command>"; }
 
     public static string? Run(Player p, string[] args) {

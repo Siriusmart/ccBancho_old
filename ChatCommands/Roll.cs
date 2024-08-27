@@ -3,6 +3,10 @@ using MCGalaxy;
 public class Roll : ChatCommand {
     static Random rng = new Random();
 
+    public static bool Public() {
+        return true;
+    }
+
     public static string Format() { return "<min=1> <max=100>"; }
 
     public static string? Run(Player p, string[] args) {

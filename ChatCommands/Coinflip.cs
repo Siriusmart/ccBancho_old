@@ -3,6 +3,10 @@ using MCGalaxy;
 public class Coinflip : ChatCommand {
     static Random rng = new Random();
 
+    public static bool Public() {
+        return true;
+    }
+
     public static string Format() { return ""; }
 
     public static string? Run(Player p, string[] args) {

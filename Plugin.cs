@@ -17,7 +17,7 @@ public class BanchoBot : Plugin {
     }
 
     public override int build {
-        get { return 0; }
+        get { return 1; }
     }
 
     public override void Load(bool startup) {
